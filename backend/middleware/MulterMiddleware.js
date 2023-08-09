@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
 
 })
 
+
 const fileFilter = (req, file, cb) => {
     const allowedTypes = ["image/jpg", "image/jpeg", "image/png", "image/PNG"] 
     if(allowedTypes.includes(file.mimetype)){
@@ -22,5 +23,16 @@ const fileFilter = (req, file, cb) => {
     }
 }
 
-const uploadMiddleware = multer({storage, fileFilter});
+const uploadMiddleware = multer({storage});
 module.exports = uploadMiddleware
+
+
+
+// allowedFiles:function(req, file, cb) {
+//     // Accept images only
+//     if (!file.originalname.match(/\.(pdf|doc|txt|jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+//         req.fileValidationError = 'Only pdf|doc|txt|jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF file type are allowed!';
+//         return cb(new Error('Only pdf|doc|txt|jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF file type  are allowed!'), false);
+//     }
+//     cb(null, true);
+// }

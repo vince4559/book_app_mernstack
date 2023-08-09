@@ -33,6 +33,10 @@ const bookModel = new mongoose.Schema({
         type:String,
         require: true,
     },
+    ebook:{
+        type:String,
+        
+    }
 },{timestamps:true})
 
 module.exports = mongoose.model('book', bookModel)
