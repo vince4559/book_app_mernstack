@@ -22,8 +22,6 @@ exports.addBook = async(req, res, next) => {
     const photo = req.files.photo[0].filename;
     const ebook = req.files.ebook[0].filename;
 
-    console.log(photo)
-    console.log(ebook)
 
     let book;
     try {
