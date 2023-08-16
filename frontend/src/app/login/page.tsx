@@ -12,42 +12,45 @@ const Login = () => {
     const dispatch = useAppDispatch()
     const router = useRouter();
 
-    const handleLogin = async(e:React.FormEvent) => {
-      e.preventDefault();
-      const url = `${baseUrl}/auth/login`;
-      dispatch(authActions.login())
+    const sendLoginReg = async() => {
       try {
-        await axios.post(url, {email, password})
-        console.log('login successully')
-        
-        router.push('/books')
-      } catch (err) {
-        console.log(err)
+      await axios.post(`${baseUrl}/auth/login`, { email, password})
+      console.log('login successfull')
+      } catch (error) {
+       throw new Error()
       }
-    };
+   };
+
+   const handleLogin = () =>{
+    sendLoginReg()
+    .then(() => dispatch(authActions.login()))
+    .then(() => router.push('/books'))
+    
+   }
+
     
   return (
-    <section className='flex flex-col items-center justify-center w-full h-full gap-4 p-5 bg-black'>
-       <p className='my-5 text-red-100'>Please up the forms below to signup</p>
-        <form onSubmit={handleLogin} >                  
+    <section className='flex flex-col items-center justify-center w-full h-full p-5 bg-black '>
+       <p className='my-5 text-xl text-red-100'>Login Here:</p>
+                 
           <label htmlFor='email'>
             <p>Email:</p>
             <input type='email' inputMode='email'  placeholder='johndoe@dev.com' required
-              value={email} onChange={(e) => setEmail(e.target.value)}
+              value={email} onChange={(e) => setEmail(e.target.value)} 
             />
-          </label><br/><br/>
+          </label><br/>
 
           <label htmlFor='password'>
             <p>Password:</p>
-            <input type='password' inputMode='text' placeholder='Enter password here' required
+            <input type='password'  placeholder='Enter password here' required
               value={password} onChange={(e) => setPassword(e.target.value)}
             />
           </label><br/><br/>
 
-          <button type='submit' className='btn btn-primary'>
+          <button onClick={handleLogin}
+          className='btn btn-primary' >
             Login
           </button>
-        </form>
     </section>
   )
 }

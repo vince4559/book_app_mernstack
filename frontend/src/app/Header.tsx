@@ -16,7 +16,6 @@ const Header = () => {
 
 
   const isloggedIn = useAppSelector((state) => state.authSlice.isLoggedIn) 
-    // console.log(isloggedIn)
 
   const handleClick =() => {
     setOpen(!open)  
