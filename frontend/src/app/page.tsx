@@ -17,8 +17,9 @@ const HomePage = () => {
             </p>
 
             <p className='my-10 text-red-300'>
-              "<strong>Disclaimer:</strong> You must be logged in before you can add a book"
+              <strong>Disclaimer:</strong> You must be logged in before you can add a book
             </p>
+            
             <div className='flex items-center justify-center gap-6 mt-14'>
             <button onClick={() => router.push('/login')}  className='btn btn-primary'>
               Login
