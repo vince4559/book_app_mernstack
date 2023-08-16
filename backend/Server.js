@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000
 
 // middlewares
 const app = express();
-app.use(cors({credentials: true}))
+app.use(cors({credentials: true, origin:'http://localhost:3000'}))
 app.use(express.json());
 app.use(cookieParser())
 app.use(express.static('public'))
@@ -18,7 +18,7 @@ app.use(express.static('public'))
 // connect to database
 mongoose.connect(process.env.MONGO_URL)
 .then(() => console.log("mongo db connected successfully"))
-.catch(err => console.log(err))
+.catch(error => console.log(error))
 
 
 // routes

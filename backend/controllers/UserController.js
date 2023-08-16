@@ -43,8 +43,8 @@ exports.login = async(req, res, next) => {
 
     try {
         existingUser = await userModel.findOne({email:email})
-    } catch (err) {
-        console.log(err)
+    } catch (error) {
+        console.log(error)
     }
 
     if(!existingUser){
@@ -95,28 +95,28 @@ exports.verifyToken = (req, res, next) => {
         if(err){
           return  res.status(400).json({message:'Invalid Token'})
         }
-        console.log(user.id)
+        // console.log(user.id)
         req.id = user.id
     });
     next()
 }
 
 
-exports.getUser = async(req, res, next) => {
-    const userId = req.id;
+exports.getUser =async (req, res, next) => {
+    const userId = req.id
     let user;
 
     try {
-        user =await userModel.findById(userId, "-password")
+        user = await userModel.findById(userId, "-password");
     } catch (err) {
-        console.log(err)
+       console.log(err)
     }
 
     if(!user){
-        return res.status(404).json({msg:"user not found"})
+        return res.status(404).json({message:'User not found'})
     }
-    return res.status(200).json({user})
-}
+        return res.status(200).json({user})
+};
 
 
 
@@ -139,7 +139,7 @@ exports.refreshToken = (req, res, next) => {
         // token
         const token = jwt.sign({id:user.id}, JWT_SECRETE_KEY, {expiresIn:"45s"})
 
-        console.log(token)
+        // console.log(token)
 
         // setting cookies
     
