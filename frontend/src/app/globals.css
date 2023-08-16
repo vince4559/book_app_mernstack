@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to top,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer base {
+  .container {
+    @apply p-10 bg-slate-400
+  }
+
+  input, textArea {
+    @apply p-2 border border-black rounded-md my-2 bg-slate-500
+  }
+
+
+  .btn{
+    @apply px-2 py-2 rounded-lg hover:transition hover:duration-300 hover:opacity-80 disabled:opacity-100
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white w-28
+  }
+
+  .btn-secondary {
+    @apply bg-orange-950 text-white w-28
+  }
+
+  span{
+    @apply text-blue-400 font-serif
+  }
+
+  h1{
+    @apply text-4xl text-white  my-1 tracking-wide  
+  }
+
+  h2{
+    @apply my-1 text-2xl text-amber-100
+  }
+
+  h3{
+    @apply  my-1 text-lg text-amber-100
+  }
+  h4{
+    @apply my-1  text-amber-100 
+  }
+  p{
+    @apply font-serif text-white
+  }
+  a{
+    @apply text-blue-600 hover:text-blue-400 transition underline-offset-2 font-bold
+  }
+
+}
