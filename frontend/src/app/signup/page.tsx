@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React,{useState} from 'react'
 import { baseUrl } from '../utils/constant';
 
-const page = () => {
+const Signup = () => {
     const [email, setEmail] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -56,4 +56,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Signup

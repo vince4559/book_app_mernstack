@@ -6,7 +6,7 @@ import {useAppDispatch} from '../redux/hook'
 import { authActions } from '../redux/slices/authSlice';
 import { baseUrl } from '../utils/constant';
 
-const page = () => {
+const Login = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const dispatch = useAppDispatch()
@@ -52,4 +52,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Login

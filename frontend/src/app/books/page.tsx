@@ -11,10 +11,11 @@ import { baseUrl } from '../utils/constant';
 const Books =  () => {
   const [search, setSeacrch] = useState<string>('')
   const [newBooks, setNewBooks] = useState<book[]>([]);
-  const URL = `${baseUrl}/api/books`;
+  
 
 
   useEffect(() => {
+    const URL = `${baseUrl}/api/books`;
     const fetchBooks =async () => {
       const res =await axios.get(URL)      
       setNewBooks(res.data.books)

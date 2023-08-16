@@ -1,19 +1,19 @@
 "use client"
 import Image from 'next/image'
 import React from 'react'
-import lib from '../../public/lib.png'
 import { useRouter } from 'next/navigation'
 
-const page = () => {
+
+const HomePage = () => {
   const router = useRouter()
   return (
-    <main className="h-full bg-black max-w-screen bg-size-cover bg-blend-darken ">
+    <main className="h-full bg-black max-w-screen">
       <div className="grid gap-4 p-7 lg:grid-cols-2">
         {/* grid 0ne */}
           <div className='mt-5'>
             <h1 className='mb-10 text-center'>Unlimiteed Access to 100k+ Books and Resources</h1>
             <p className='text-amber-500'>
-              “The more that you read, the more things you will know. The more that you learn, the more places you'll go.” “Books are a uniquely portable magic.” “I kept always two books in my pocket, one to read, one to write in.”
+              The more that you read, the more things you will know. The more that you learn, the more places you'll go. Books are a uniquely portable magic. I kept always two books in my pocket, one to read, one to write in.
             </p>
             <div className='flex items-center justify-center gap-6 mt-14'>
             <button onClick={() => router.push('/login')}  className='btn btn-primary'>
@@ -27,7 +27,7 @@ const page = () => {
           
           {/* grid two */}
           <div className='flex justify-center mt-5'>
-            <Image alt='libarian' src={lib} width={500} height={500}
+            <Image alt='libarian' src={'/../public/lib.png'} width={500} height={500}
               className='rounded-lg'
             />
           </div>
@@ -38,7 +38,7 @@ const page = () => {
         <div>
           <h2> Read Comfortable From Anywhere </h2>           
           <p className='my-5'>
-            “I find television very educating. Every time somebody turns on the set, I go into the other room and read a book.”
+            I find television very educating. Every time somebody turns on the set, I go into the other room and read a book.
           </p>
         </div>
         
@@ -49,11 +49,11 @@ const page = () => {
         
         <div className='flex flex-col items-start justify-center'>
             <h3>Easier access to library</h3>
-            <p >There is more treasure in books than in all the pirate’s loot on Treasure Island.</p>
+            <p >There is more treasure in books than in all the pirate loot on Treasure Island.</p>
         </div>
       </div>
     </main>
   )
 }
 
-export default page
+export default HomePage
