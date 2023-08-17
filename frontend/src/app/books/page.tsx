@@ -13,18 +13,24 @@ const Books =  () => {
   const [search, setSeacrch] = useState<string>('')
   const [newBooks, setNewBooks] = useState<book[]>([]);
   const [loading, setLoading] = useState(true)
+  const [errorMsg, setErrorMsg] = useState('')
   
 
 
-  useEffect(() => {
-    const URL = `${baseUrl}/books`;
-    const fetchBooks =async () => {
-      const res =await axios.get(URL)      
+  const getBooks = async() => {
+    try {
+      const res = await axios.get(`${baseUrl}/books`);
       setNewBooks(res.data.books)
       setLoading(false)
+    } catch (error:any) {
+      setErrorMsg(error.res.statusText && "Data Not Found");
+      setLoading(false)
+    }
   }
-  fetchBooks()
-  },[newBooks])
+
+  useEffect(() => {
+    getBooks()
+  },[])
   
 
   // fitter books
@@ -37,7 +43,10 @@ const Books =  () => {
       <input type='search' placeholder='Search Books by name' 
       value={search} onChange={e => setSeacrch(e.target.value)}
       />
-      {loading && <p>Loading...</p>}
+     
+     {loading? <p>Data is loading...</p>
+     :errorMsg? <p>{errorMsg}</p>
+     :(
       <ul className='flex flex-wrap justify-between w-56 gap-5 p-3 mx-auto mt-3 items-bottom lg:w-full'>
        {
         books.map(book => (
@@ -61,6 +70,9 @@ const Books =  () => {
       ))
        }       
   </ul>
+     )
+    }
+      
     </section>
   )
 }

@@ -10,7 +10,11 @@ const PORT = process.env.PORT || 5000
 
 // middlewares
 const app = express();
-app.use(cors({credentials: true, origin:['https://book-app-mernstack.vercel.app']}))
+app.use(cors({
+    credentials: true, 
+    origin:["https://book-app-mernstack.vercel.app"],
+    method:["POST", "GET", "DELETE"]
+}))
 app.use(express.json());
 app.use(cookieParser())
 app.use(express.static('public'))
@@ -24,6 +28,10 @@ mongoose.connect(process.env.MONGO_URL)
 // routes
 app.use(bookrouter)
 app.use(userRouter)
+
+app.get('/', (req, res) => {
+    res.json('hello');
+})
 
 // listen to server
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`))
