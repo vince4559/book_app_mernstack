@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000
 // middlewares
 const app = express();
 app.use(cors({
-    credentials: true, 
+    credentials: false, 
     origin:["http://localhost:3000"],
     method:["POST", "GET", "DELETE"]
 }))
