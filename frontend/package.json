@@ -2,6 +2,7 @@
   "name": "book",
   "version": "0.1.0",
   "private": true,
+  "proxy" : "https://new-book-storez.onrender.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

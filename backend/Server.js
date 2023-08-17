@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000
 
 // middlewares
 const app = express();
-app.use(cors({credentials: true, origin:'*'}))
+app.use(cors({credentials: true, origin:'https://book-app-mernstack-oe2f.vercel.app/'}))
 app.use(express.json());
 app.use(cookieParser())
 app.use(express.static('public'))
