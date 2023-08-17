@@ -39,7 +39,8 @@ const Header = () => {
         <ul className='items-center hidden gap-8 md:flex '>
           <li><Link href={'/'}>Home</Link></li>
           <li><Link href={'/books'}>Books</Link></li>
-          <li><Link href={isloggedIn? '/addbook' : '/'}>Add Book</Link></li>
+          {/* <li><Link href={isloggedIn? '/addbook' : '/'}>Add Book</Link></li> */}
+          <li><Link href={'/addbook'}>Add Book</Link></li>
         </ul>
 
         
@@ -62,7 +63,8 @@ const Header = () => {
           duration-500 flex flex-col gap-5 ${open? 'left-0' : 'left-[100%]'}`}>
           <li><a href={'/'}>Home</a></li>
           <li><a href={'/books'}>Books</a></li>
-          <li><a href={isloggedIn? '/addbook' : '/'}>Add Book</a></li>
+          {/* <li><a href={isloggedIn? '/addbook' : '/'}>Add Book</a></li> */}
+          <li><Link href={'/addbook'}>Add Book</Link></li>
 
             <div className='flex flex-col gap-4 mt-5'>
             {isloggedIn? <Logout /> : 
