@@ -1,1 +1,1 @@
-export const baseUrl ="https://book-app-mernstack-api.vercel.app/"
+export const baseUrl ="https://book-app-mernstack-api.vercel.app"
