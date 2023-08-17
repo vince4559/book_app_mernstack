@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import React from 'react'
 import { useRouter } from 'next/navigation'
-import myLib from '../../public/lib.jpg'
 
 
 
@@ -34,7 +33,7 @@ const HomePage = () => {
           
           {/* grid two */}
           <div className='flex justify-center mt-5'>
-            <Image alt='libarian' src={myLib} width={500} height={500}
+            <Image alt='libarian' src={'/lib.jpg'} width={500} height={500}
               className='rounded-lg'
             />
           </div>
