@@ -14,7 +14,7 @@ const Login = () => {
 
     const sendLoginReg = async() => {
       try {
-      await axios.post(`${baseUrl}/auth/login`, { email, password})
+      await axios.post(`${baseUrl}/login`, { email, password})
       console.log('login successfull')
       } catch (error) {
        throw new Error()

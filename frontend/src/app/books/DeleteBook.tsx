@@ -6,7 +6,7 @@ import { baseUrl } from '../utils/constant';
 
 const DeleteBook = ({bookId}:string|any) => {
     const router = useRouter()
-    const URL = `${baseUrl}/api/deletebook/${bookId}`;
+    const URL = `${baseUrl}/deletebook/${bookId}`;
     
     const handleDelete =async () => {
         await axios.delete(URL)

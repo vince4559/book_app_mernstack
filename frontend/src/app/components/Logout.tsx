@@ -12,7 +12,7 @@ const Logout = () => {
     const dispatch = useAppDispatch();
 
     const handleLogout = async() => {
-        const url = `${baseUrl}/auth/logout`
+        const url = `${baseUrl}/logout`
         try {
             await axios.post(url, null,{withCredentials:true})
             console.log('logout successfully')

@@ -37,7 +37,7 @@ const AddBook = () => {
     setFormData({...formData, [name]:files[index]})
   };
 
-  const URL = `${baseUrl}/api/savebook`;
+  const URL = `${baseUrl}/savebook`;
   const handleSubmit = (e:React.FormEvent) => {
     e.preventDefault();
     const form =new FormData()

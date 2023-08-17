@@ -22,8 +22,8 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 // routes
-app.use('/api',bookrouter)
-app.use('/auth', userRouter)
+app.use(bookrouter)
+app.use(userRouter)
 
 // listen to server
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`))

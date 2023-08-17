@@ -16,7 +16,7 @@ const Books =  () => {
 
 
   useEffect(() => {
-    const URL = `${baseUrl}/api/books`;
+    const URL = `${baseUrl}/books`;
     const fetchBooks =async () => {
       const res =await axios.get(URL)      
       setNewBooks(res.data.books)
@@ -44,7 +44,7 @@ const Books =  () => {
               className='p-1 border-2 rounded-xl w-52 h-max-48'
           >
             <a href={`/books/${book._id}`}>
-            <Image alt='book' src={`http://localhost:5000/photos/${book.photo}`}
+            <Image alt='book' src={`${baseUrl}/photos${book.photo}`}
                   width={300} height={200}
               />
                                 

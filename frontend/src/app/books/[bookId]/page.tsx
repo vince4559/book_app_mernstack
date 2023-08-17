@@ -16,7 +16,7 @@ interface idBook{
 }
 
 const fetchBook =async (bookId:string) => {
-    const URL = `${baseUrl}/api/books/${bookId}`
+    const URL = `${baseUrl}/books/${bookId}`
     const res = await axios.get(URL)
     const book:book = await res.data.book
     return book
@@ -42,11 +42,11 @@ const page = async ({params:{bookId}}:idBook) => {
                 <p><span>Price</span>: {Format_currrency(price)}</p>
                 <p><span>Book Category</span>: {category}</p>         
        </div>
-        <Image src={`http://localhost:5000/photos/${photo}`} 
+        <Image src={`${baseUrl}/photos/${photo}`} 
             width={300} height={300} alt='photo' />
 
                 
-                <GetFile name={name} fileLink={`http://localhost:5000/photos/${book.ebook}`} />
+                <GetFile name={name} fileLink={`${baseUrl}/photos/${book.ebook}`} />
                 
             <DeleteBook bookId={_id} />
     </div>

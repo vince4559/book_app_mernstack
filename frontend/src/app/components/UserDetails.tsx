@@ -17,7 +17,7 @@ const UserDetails = () => {
     // console.log(user)
 
     const getUser =async () => {
-        const url = `${baseUrl}/auth/user`
+        const url = `${baseUrl}/user`
         try {
          const res =  await axios.get(url, {withCredentials:true})
          const data = await res.data
@@ -29,7 +29,7 @@ const UserDetails = () => {
 
     const refreshToken = async () => {
       try {
-       const res =await axios.get(`${baseUrl}/auth/refresh`, {
+       const res =await axios.get(`${baseUrl}/refresh`, {
          withCredentials:true
        })
        const data = res.data
