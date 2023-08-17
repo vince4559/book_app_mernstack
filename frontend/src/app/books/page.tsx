@@ -13,7 +13,7 @@ const Books =  () => {
   const [search, setSeacrch] = useState<string>('')
   const [newBooks, setNewBooks] = useState<book[]>([]);
   const [loading, setLoading] = useState(true)
-  const [errorMsg, setErrorMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState(null)
   
 
 

@@ -5,6 +5,7 @@ import React,{useState} from 'react'
 import {useAppDispatch} from '../redux/hook'
 import { authActions } from '../redux/slices/authSlice';
 import { baseUrl } from '../utils/constant';
+axios.defaults.withCredentials = true;
 
 const Login = () => {
     const [email, setEmail] = useState<string>('');
