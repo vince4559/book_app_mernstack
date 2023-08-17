@@ -4,6 +4,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import { book } from '../../../typings';
 import { baseUrl } from '../utils/constant';
+axios.defaults.withCredentials = true
 
 
 
