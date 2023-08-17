@@ -14,7 +14,7 @@ const Logout = () => {
     const handleLogout = async() => {
         const url = `${baseUrl}/logout`
         try {
-            await axios.post(url, null,{withCredentials:true})
+            await axios.post(url,{withCredentials:true})
             console.log('logout successfully')
             dispatch(authActions.logOut())
             router.push('/')

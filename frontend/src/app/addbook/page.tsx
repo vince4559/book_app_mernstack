@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { book } from '../../../typings';
 import { baseUrl } from '../utils/constant';
+axios.defaults.withCredentials = true;
 
 
 const initialData = {
