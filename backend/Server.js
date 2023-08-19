@@ -10,10 +10,13 @@ const PORT = process.env.PORT || 5000
 
 // middlewares
 const app = express();
+
+
+app.use('', Proxy(''))
+app.options("*", cors({ origin: 'http://localhost:3000', optionsSuccessStatus: 200 }));
 app.use(cors({
     credentials: true, 
-    origin:["http://localhost:3000"],
-    method:["POST", "GET", "DELETE"]
+    origin:"http://localhost:3000",
 }));
 app.use(express.json());
 app.use(cookieParser())
