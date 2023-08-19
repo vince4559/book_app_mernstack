@@ -4,7 +4,8 @@ import {useRouter} from 'next/navigation'
 import { useAppDispatch } from '../redux/hook';
 import axios from 'axios';
 import { authActions } from '../redux/slices/authSlice';
-import { baseUrl } from '../utils/constant';
+import { bookStore } from '../endpoint/bookStore';
+import { AUTH } from '../endpoint/routes';
 axios.defaults.withCredentials = true;
 
 const Logout = () => {
@@ -12,9 +13,8 @@ const Logout = () => {
     const dispatch = useAppDispatch();
 
     const handleLogout = async() => {
-        const url = `${baseUrl}/logout`
         try {
-            await axios.post(url,{withCredentials:true})
+            await bookStore.post(AUTH.LOGOUT,{withCredentials:true})
             console.log('logout successfully')
             dispatch(authActions.logOut())
             router.push('/')

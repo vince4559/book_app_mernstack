@@ -1,11 +1,14 @@
 "use client"
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React,{useState} from 'react'
 import {useAppDispatch} from '../redux/hook'
 import { authActions } from '../redux/slices/authSlice';
-import { baseUrl } from '../utils/constant';
-axios.defaults.withCredentials = true;
+import { bookStore } from '../endpoint/bookStore';
+import { AUTH } from '../endpoint/routes';
+
+
+
+
 
 const Login = () => {
     const [email, setEmail] = useState<string>('');
@@ -15,10 +18,10 @@ const Login = () => {
 
     const sendLoginReg = async() => {
       try {
-      await axios.post(`${baseUrl}/login`, { email, password})
+       await bookStore.post(AUTH.LOGIN, { email, password})
       console.log('login successfull')
       } catch (error) {
-       throw new Error()
+      console.log(error)
       }
    };
 
@@ -26,7 +29,6 @@ const Login = () => {
     sendLoginReg()
     .then(() => dispatch(authActions.login()))
     .then(() => router.push('/books'))
-    
    }
 
     

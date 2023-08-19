@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser')
 const bookrouter = require("./routes/BookRoute");
 const userRouter = require("./routes/UserRouter")
-const proxy = require('express-http-proxy');
+// const proxy = require('express-http-proxy');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 
@@ -23,7 +23,7 @@ app.use(
 );
 
 // http-express proxy
-app.use('/proxy', proxy("http://localhost:3000"))
+// app.use('/proxy', proxy("http://localhost:3000"))
 app.use(cors({
     credentials: true, 
     origin:"http://localhost:3000",

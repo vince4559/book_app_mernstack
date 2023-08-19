@@ -1,7 +1,8 @@
 "use client"
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { baseUrl } from '../utils/constant';
+import { bookStore } from '../endpoint/bookStore';
+import { AUTH } from '../endpoint/routes';
 axios.defaults.withCredentials = true;
 
 interface PropType {
@@ -17,9 +18,8 @@ const UserDetails = () => {
     // console.log(user)
 
     const getUser =async () => {
-        const url = `${baseUrl}/user`
         try {
-         const res =  await axios.get(url, {withCredentials:true})
+         const res =  await bookStore.get(AUTH.GET_USER, {withCredentials:true})
          const data = await res.data
          setUser(data.user)
         } catch (err) {
@@ -29,7 +29,7 @@ const UserDetails = () => {
 
     const refreshToken = async () => {
       try {
-       const res =await axios.get(`${baseUrl}/refresh`, {
+       const res =await bookStore.get(AUTH.REFRESH, {
          withCredentials:true
        })
        const data = res.data

@@ -7,6 +7,8 @@ import DeleteBook from '../DeleteBook';
 import { notFound } from 'next/navigation';
 import GetFile from '@/app/components/GetFile';
 import { baseUrl } from '@/app/utils/constant';
+import { BOOK } from '@/app/endpoint/routes';
+import { bookStore } from '@/app/endpoint/bookStore';
 
 
 interface idBook{
@@ -14,10 +16,10 @@ interface idBook{
         bookId:string
     }
 }
-
+// const URL = `${baseUrl}/books/${bookId}`
 const fetchBook =async (bookId:string) => {
-    const URL = `${baseUrl}/books/${bookId}`
-    const res = await axios.get(URL)
+    const URL = `${BOOK.GET_BOOK_BY_ID}/${bookId}`
+    const res = await bookStore.get(URL)
     const book:book = await res.data.book
     return book
 };
@@ -42,11 +44,11 @@ const page = async ({params:{bookId}}:idBook) => {
                 <p><span>Price</span>: {Format_currrency(price)}</p>
                 <p><span>Book Category</span>: {category}</p>         
        </div>
-        <Image src={`${baseUrl}/photos/${photo}`} 
+        <Image src={`http://localhost:5000/photos/${book.photo}`}
             width={300} height={300} alt='photo' />
 
                 
-                <GetFile name={name} fileLink={`${baseUrl}/photos/${book.ebook}`} />
+                <GetFile name={name} fileLink={`http://localhost:5000/photos/${book.ebook}`} />
                 
             <DeleteBook bookId={_id} />
     </div>

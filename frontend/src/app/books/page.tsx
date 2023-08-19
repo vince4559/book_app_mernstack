@@ -1,10 +1,10 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
-import axios from 'axios';
 import { book } from '../../../typings';
-import { baseUrl } from '../utils/constant';
-axios.defaults.withCredentials = true
+import { bookStore } from '../endpoint/bookStore';
+import { BOOK } from '../endpoint/routes';
+
 
 
 
@@ -13,17 +13,16 @@ const Books =  () => {
   const [search, setSeacrch] = useState<string>('')
   const [newBooks, setNewBooks] = useState<book[]>([]);
   const [loading, setLoading] = useState(true)
-  const [errorMsg, setErrorMsg] = useState(null)
-  
-
+  const [errorMsg, setErrorMsg] = useState('')
+ 
 
   const getBooks = async() => {
     try {
-      const res = await axios.get(`${baseUrl}/books`);
+      const res = await bookStore.get(BOOK.GET_BOOKS);
       setNewBooks(res.data.books)
       setLoading(false)
     } catch (error:any) {
-      setErrorMsg(error.res.statusText && "Data Not Found");
+      setErrorMsg(error && "Books Not Found");
       setLoading(false)
     }
   }
@@ -54,7 +53,7 @@ const Books =  () => {
               className='p-1 border-2 rounded-xl w-52 h-max-48'
           >
             <a href={`/books/${book._id}`}>
-            <Image alt='book' src={`${baseUrl}/photos${book.photo}`}
+            <Image alt='book' src={`http://localhost:5000/photos/${book.photo}`}
                   width={300} height={200}
               />
                                 

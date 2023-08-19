@@ -1,10 +1,9 @@
 "use client"
 import React, { useState } from 'react'
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { book } from '../../../typings';
-import { baseUrl } from '../utils/constant';
-axios.defaults.withCredentials = true;
+import { BOOK } from '../endpoint/routes';
+import { bookStore } from '../endpoint/bookStore';
 
 
 const initialData = {
@@ -38,26 +37,26 @@ const AddBook = () => {
     setFormData({...formData, [name]:files[index]})
   };
 
-  const URL = `${baseUrl}/savebook`;
+
   const handleSubmit = (e:React.FormEvent) => {
     e.preventDefault();
-    const form =new FormData()
-    form.append('photo', formData.photo)
-    form.append('author', formData.author)
-    form.append('available', formData.available)
-    form.append('description', formData.description)
-    form.append('name', formData.name)
-    form.append('price', formData.price)
-    form.append('category', formData.category)
-    form.append('ebook', formData.ebook)
-    
-    axios.post(URL, form)
-    .then((res) => {
-      console.log(res.data)
-      setFormData(initialData)
-      router.push('/books')
-    })
-    .catch(err => console.log(err))
+   console.log('submit')
+   const form =new FormData()
+   form.append('photo', formData.photo)
+   form.append('author', formData.author)
+   form.append('available', formData.available)
+   form.append('description', formData.description)
+   form.append('name', formData.name)
+   form.append('price', formData.price)
+   form.append('category', formData.category)
+   form.append('ebook', formData.ebook)
+   
+    bookStore.post(BOOK.SAVE_BOOK, form)
+   .then((res) => {
+     console.log(res.data)
+     router.push('/books')
+   })
+   .catch(err => console.log('error occured'))
   }
   
   
@@ -67,7 +66,7 @@ const AddBook = () => {
     ">
       <h1>Add Book To Book Store</h1>
       
-      <form onSubmit={handleSubmit} encType='multipart/form-data' method='post'>
+      <form onSubmit={handleSubmit} >
         <label htmlFor='name'>
           <p>Book Name:</p>
           <input type='text' name='name' placeholder='Book Name' required
