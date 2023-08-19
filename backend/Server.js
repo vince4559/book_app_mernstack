@@ -5,15 +5,14 @@ const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser')
 const bookrouter = require("./routes/BookRoute");
 const userRouter = require("./routes/UserRouter")
+const proxy = require('express-http-proxy');
 
 const PORT = process.env.PORT || 5000
 
 // middlewares
 const app = express();
 
-
-app.use('', Proxy(''))
-app.options("*", cors({ origin: 'http://localhost:3000', optionsSuccessStatus: 200 }));
+app.use('/proxy', proxy("http://localhost:3000"))
 app.use(cors({
     credentials: true, 
     origin:"http://localhost:3000",
