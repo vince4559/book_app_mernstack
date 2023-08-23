@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser')
 const bookrouter = require("./routes/BookRoute");
 const userRouter = require("./routes/UserRouter")
-const proxy = require('express-http-proxy');
+
 
 
 
@@ -15,12 +15,12 @@ const PORT = process.env.PORT || 5000
 const app = express();
 
 
-// http-express proxy
-// app.use('/proxy', proxy("http://localhost:3000"));
 app.use(cors({
     credentials: true, 
     origin:"http://localhost:3000",
-    allowedHeaders:"*",
+    allowedHeaders:'*',
+    preflightContinue:false,
+    optionsSuccessStatus:'204'   
 }));
 app.use(express.json());
 app.use(cookieParser())
