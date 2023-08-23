@@ -18,9 +18,7 @@ const app = express();
 app.use(cors({
     credentials: true, 
     origin:"http://localhost:3000",
-    allowedHeaders:'*',
-    preflightContinue:false,
-    optionsSuccessStatus:'204'   
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'device-remember-token', 'Access-Control-Allow-Origin', 'Origin', 'Accept']
 }));
 app.use(express.json());
 app.use(cookieParser())
