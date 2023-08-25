@@ -71,7 +71,7 @@ exports.login = async(req, res, next) => {
     res.cookie(String(existingUser._id), token, {
         path: '/',
         expires: new Date(Date.now() + 1000 * 45),
-        httpOnly: true,
+        httpOnly: false,
         sameSite: "lax"
     })
 
