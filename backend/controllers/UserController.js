@@ -71,8 +71,8 @@ exports.login = async(req, res, next) => {
     res.cookie(String(existingUser._id), token, {
         path: '/',
         expires: new Date(Date.now() + 1000 * 45),
-        httpOnly: false,
-        sameSite: "lax"
+        httpOnly: true,
+        sameSite: "none",
     })
 
     return res
@@ -147,7 +147,7 @@ exports.refreshToken = (req, res, next) => {
             path: '/',
             expires: new Date(Date.now() + 1000 * 45),
             httpOnly: true,
-            sameSite: "lax"
+            sameSite: "none"
         })
 
         req.id = user.id;    
