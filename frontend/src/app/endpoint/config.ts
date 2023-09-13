@@ -7,3 +7,5 @@ export const getConfig = () => {
     return config.API()
 }
 
+// https://new-book-storez.onrender.com
+// https://book-app-mernstack-api.vercel.app

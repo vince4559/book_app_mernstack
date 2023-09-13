@@ -73,7 +73,7 @@ exports.updateBookById = async(req, res, next) => {
 
 
 // delete a book by id
-exports.deleteBookById = async(req, res, next) => {
+exports.deleteBookById = async(req, res) => {
     let book;
     const id = req.params.id;
 

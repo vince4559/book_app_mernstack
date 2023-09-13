@@ -38,9 +38,8 @@ const AddBook = () => {
   };
 
 
-  const handleSubmit = (e:React.FormEvent) => {
+  const handleSubmit = async(e:React.FormEvent) => {
     e.preventDefault();
-   console.log('submit')
    const form =new FormData()
    form.append('photo', formData.photo)
    form.append('author', formData.author)
@@ -51,12 +50,10 @@ const AddBook = () => {
    form.append('category', formData.category)
    form.append('ebook', formData.ebook)
    
-    bookStore.post(BOOK.SAVE_BOOK, form)
-   .then((res) => {
-     console.log(res.data)
-     router.push('/books')
-   })
-   .catch(err => console.log('error occured'))
+    await bookStore.post(BOOK.SAVE_BOOK, form)
+   .then((res) =>console.log(res.data) )
+   .then(() => router.push('/books'))
+   .catch(err => console.log(err))
   }
   
   
@@ -66,7 +63,7 @@ const AddBook = () => {
     ">
       <h1>Add Book To Book Store</h1>
       
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit} encType='multipart/form-data'>
         <label htmlFor='name'>
           <p>Book Name:</p>
           <input type='text' name='name' placeholder='Book Name' required

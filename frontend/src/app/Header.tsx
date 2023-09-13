@@ -45,7 +45,7 @@ const Header = () => {
 
         
         <div className='hidden gap-5 md:flex'>
-             {isloggedIn? <Logout /> : 
+             {isloggedIn ? <Logout /> : 
               <button onClick={() => router.push('/login')}  className='btn btn-primary'>
               Login
             </button>

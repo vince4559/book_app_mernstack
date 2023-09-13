@@ -5,6 +5,9 @@ import {useAppDispatch} from '../redux/hook'
 import { authActions } from '../redux/slices/authSlice';
 import { bookStore } from '../endpoint/bookStore';
 import { AUTH } from '../endpoint/routes';
+import axios from 'axios';
+axios.defaults.headers.common['Authorization'] = true
+
 
 
 
@@ -28,8 +31,10 @@ const Login = () => {
    const handleLogin = () =>{
     sendLoginReg()
     .then(() => dispatch(authActions.login()))
-    .then(() => router.push('/books'))
+    // .then(() => router.push('/books'))
    }
+
+
 
     
   return (
